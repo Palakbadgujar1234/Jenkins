@@ -1,0 +1,20 @@
+pipeline 
+{
+    agent any 
+
+    parameters {
+        string(defaultValue:"TEST",description:"environment of deployment",name:"deplyEnv")
+        choice(choices:["EU-WEST-2A", "EU-WEST-2B" , "EU-WEST-2C"],description:"Azs of ${params.name} deployment",name:"azDeployment")
+        booleanParam(defaultValue: false ,description:"CONFIRM DEPLOYMENT ?",name:"confirmationDeployment")
+    }
+    stages {
+        stage("Deployment in progress......")
+        {
+            steps {
+                echo "String is set to ${deplyEnv} \n"
+                echo "Choice is set to ${azDeployment} \n"
+                echo "Your response for the deployment is :- ${confirmationDeployment} \n"
+            }
+        }
+    }
+}
